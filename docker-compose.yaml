@@ -4,14 +4,15 @@ services:
     image: redis
     ports:
       - "6379:6379"
-    container_name: rediis
+    container_name: redis
+    hostname: redis
   application:
     image: my_application
     build: .
     container_name: application
-    links:
-      - redis:rediis
     depends_on:
+      - redis
+    links:
       - redis
 
     
